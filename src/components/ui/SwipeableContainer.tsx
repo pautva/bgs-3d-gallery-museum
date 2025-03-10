@@ -1,31 +1,25 @@
 // SwipeableContainer.tsx
 import React from "react";
 import { useSwipeable } from "react-swipeable";
+import { useTour } from "../../contexts/TourContext";
 
 interface SwipeableContainerProps {
-  onSwipeLeft: () => void;
-  onSwipeRight: () => void;
-  onSwipeDown: () => void;
-  enabled: boolean;
   children: React.ReactNode;
 }
 
 const SwipeableContainer: React.FC<SwipeableContainerProps> = ({
-  onSwipeLeft,
-  onSwipeRight,
-  onSwipeDown,
-  enabled,
   children,
 }) => {
+  const { isTourStarted, nextFrame, previousFrame, quitTour } = useTour();
+
+  // Swipe handlers for the entire screen
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: enabled ? onSwipeLeft : undefined,
-    onSwipedRight: enabled ? onSwipeRight : undefined,
-    onSwipedDown: enabled ? onSwipeDown : undefined,
-    preventDefaultTouchmoveEvent: true,
+    onSwipedLeft: isTourStarted ? nextFrame : undefined,
+    onSwipedRight: isTourStarted ? previousFrame : undefined,
+    onSwipedDown: isTourStarted ? quitTour : undefined,
+    preventScrollOnSwipe: true,
     trackMouse: false,
-    // Augmenter la sensibilité pour faciliter le swipe
     delta: 10,
-    // Ajouter un délai pour éviter les swipes accidentels
     swipeDuration: 500,
   });
 

@@ -1,27 +1,20 @@
 import React, { useEffect } from "react";
 import { Play, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDetectGPU } from "@react-three/drei";
+import { useTour } from "../../contexts/TourContext";
 
-interface TourControlsProps {
-  onStartTour: () => void;
-  onNextFrame: () => void;
-  onPreviousFrame: () => void;
-  isTourStarted: boolean;
-  currentFrameIndex: number;
-  totalFrames: number;
-  onQuitTour?: () => void;
-}
-
-const TourControls: React.FC<TourControlsProps> = ({
-  onStartTour,
-  onNextFrame,
-  onPreviousFrame,
-  isTourStarted,
-  currentFrameIndex,
-  totalFrames,
-  onQuitTour = () => {},
-}) => {
+const TourControls: React.FC = () => {
   const { isMobile } = useDetectGPU();
+
+  const {
+    isTourStarted,
+    currentFrameIndex,
+    totalFrames,
+    startTour,
+    nextFrame,
+    previousFrame,
+    quitTour,
+  } = useTour();
 
   // Keyboard controls management
   useEffect(() => {
@@ -29,7 +22,7 @@ const TourControls: React.FC<TourControlsProps> = ({
       if (!isTourStarted) {
         // If tour hasn't started, space or enter to start
         if (event.key === " " || event.key === "Enter") {
-          onStartTour();
+          startTour();
         }
       } else {
         // If tour is in progress
@@ -37,18 +30,18 @@ const TourControls: React.FC<TourControlsProps> = ({
           case "ArrowRight":
           case "d":
             if (currentFrameIndex < totalFrames - 1) {
-              onNextFrame();
+              nextFrame();
             }
             break;
           case "ArrowLeft":
           case "q":
           case "a":
             if (currentFrameIndex > 0) {
-              onPreviousFrame();
+              previousFrame();
             }
             break;
           case "Escape":
-            onQuitTour();
+            quitTour();
             break;
         }
       }
@@ -65,17 +58,17 @@ const TourControls: React.FC<TourControlsProps> = ({
     isTourStarted,
     currentFrameIndex,
     totalFrames,
-    onStartTour,
-    onNextFrame,
-    onPreviousFrame,
-    onQuitTour,
+    startTour,
+    nextFrame,
+    previousFrame,
+    quitTour,
   ]);
 
   if (!isTourStarted) {
     return (
       <div className="fixed bottom-8 md:bottom-16 left-1/2 transform -translate-x-1/2 flex gap-4 items-center">
         <button
-          onClick={onStartTour}
+          onClick={startTour}
           className="bg-white/20 hover:bg-white/30 px-4 py-2 md:px-10 md:py-4 rounded-full text-white flex items-center gap-3 shadow-lg"
         >
           <Play size={isMobile ? 18 : 24} />
@@ -96,7 +89,7 @@ const TourControls: React.FC<TourControlsProps> = ({
       style={{ width: "auto", height: "auto" }}
     >
       <button
-        onClick={onPreviousFrame}
+        onClick={previousFrame}
         disabled={currentFrameIndex === 0}
         className={`bg-white/20 p-2 rounded-full text-white w-[36px] h-[36px] flex items-center justify-center
           ${
@@ -113,7 +106,7 @@ const TourControls: React.FC<TourControlsProps> = ({
       </div>
 
       <button
-        onClick={onNextFrame}
+        onClick={nextFrame}
         disabled={currentFrameIndex === totalFrames - 1}
         className={`bg-white/20 p-2 rounded-full text-white w-[36px] h-[36px] flex items-center justify-center
           ${
@@ -126,7 +119,7 @@ const TourControls: React.FC<TourControlsProps> = ({
       </button>
 
       <button
-        onClick={onQuitTour}
+        onClick={quitTour}
         className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full text-white flex items-center gap-1 ml-2"
         title="Exit tour (Esc)"
       >

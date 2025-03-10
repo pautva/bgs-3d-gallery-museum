@@ -9,18 +9,15 @@ import { BakeShadows } from "@react-three/drei";
 import { ZoomProvider } from "../contexts/ZoomContext";
 import { CameraManager } from "./museum/CameraManager";
 import SpotlightGroup from "./museum/SpotlightGroup";
+import { useTour } from "../contexts/TourContext";
 
 interface MuseumProps {
   images: ImageMetadata[];
-  onFrameChange?: (index: number) => void;
-  currentFrameIndex?: number;
 }
 
-const Museum: React.FC<MuseumProps> = ({
-  images,
-  onFrameChange,
-  currentFrameIndex = -1,
-}) => {
+const Museum: React.FC<MuseumProps> = ({ images }) => {
+  const { currentFrameIndex, setCurrentFrameIndex, startTour, quitTour } =
+    useTour();
   const frameRefs = useRef<(THREE.Mesh | null)[]>([]);
 
   React.useEffect(() => {
@@ -38,7 +35,7 @@ const Museum: React.FC<MuseumProps> = ({
   return (
     <ZoomProvider>
       <CameraManager
-        onFrameChange={onFrameChange}
+        onFrameChange={setCurrentFrameIndex}
         currentFrameIndex={currentFrameIndex}
         frameRefs={frameRefs as React.MutableRefObject<THREE.Mesh[]>}
         imagesCount={images.length}
@@ -66,11 +63,13 @@ const Museum: React.FC<MuseumProps> = ({
                     frameRefs.current[index] = el;
                   }}
                   onFrameClick={(idx) => {
-                    if (onFrameChange) {
+                    if (setCurrentFrameIndex) {
                       if (idx === currentFrameIndex) {
-                        onFrameChange(-1);
+                        quitTour();
+                        setCurrentFrameIndex(-1);
                       } else {
-                        onFrameChange(idx);
+                        startTour();
+                        setCurrentFrameIndex(idx);
                       }
                     }
                   }}

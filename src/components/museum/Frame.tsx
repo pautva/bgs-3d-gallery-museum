@@ -116,11 +116,7 @@ const Frame = forwardRef<THREE.Mesh, FrameProps>(
         </mesh>
 
         {isZoomed && (
-          <Html
-            position={[0, -height / 2 - 0.25, -0.05]}
-            transform
-            wrapperClass="instagram-link"
-          >
+          <Html position={[0, -height / 2 - 0.25, -0.05]} transform>
             <a
               href="https://www.instagram.com/mjkdraw/"
               target="_blank"
