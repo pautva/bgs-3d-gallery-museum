@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import { Play, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useDetectGPU } from "@react-three/drei";
 
 interface TourControlsProps {
   onStartTour: () => void;
@@ -20,6 +21,8 @@ const TourControls: React.FC<TourControlsProps> = ({
   totalFrames,
   onQuitTour = () => {},
 }) => {
+  const { isMobile } = useDetectGPU();
+
   // Keyboard controls management
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -70,16 +73,18 @@ const TourControls: React.FC<TourControlsProps> = ({
 
   if (!isTourStarted) {
     return (
-      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-4 items-center">
+      <div className="fixed bottom-8 md:bottom-16 left-1/2 transform -translate-x-1/2 flex gap-4 items-center">
         <button
           onClick={onStartTour}
-          className="bg-white/20 hover:bg-white/30 px-10 py-4 rounded-full text-white flex items-center gap-3 shadow-lg"
+          className="bg-white/20 hover:bg-white/30 px-4 py-2 md:px-10 md:py-4 rounded-full text-white flex items-center gap-3 shadow-lg"
         >
-          <Play size={24} />
-          <span className="text-lg font-semibold">Start the Tour</span>
+          <Play size={isMobile ? 18 : 24} />
+          <span className="text-md md:text-lg font-semibold">
+            Start the Tour
+          </span>
         </button>
         <div className="text-white/60 text-xs mt-2 absolute -bottom-6 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-          Press Space or Enter to start
+          {isMobile ? "Tap to start" : "Press Space or Enter to start"}
         </div>
       </div>
     );
@@ -87,7 +92,7 @@ const TourControls: React.FC<TourControlsProps> = ({
 
   return (
     <div
-      className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-4 items-center bg-black/40 backdrop-blur-md p-2 rounded-full shadow-lg"
+      className="fixed bottom-8 md:bottom-16 left-1/2 transform -translate-x-1/2 flex gap-4 items-center bg-black/40 backdrop-blur-md p-2 rounded-full shadow-lg"
       style={{ width: "auto", height: "auto" }}
     >
       <button
@@ -130,7 +135,7 @@ const TourControls: React.FC<TourControlsProps> = ({
       </button>
 
       <div className="text-white/60 text-xs absolute -bottom-5 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-        ← Q/A → D | Esc to exit
+        {isMobile ? "Tap or swipe to navigate " : "← Q/A → D | Esc to exit"}
       </div>
     </div>
   );
