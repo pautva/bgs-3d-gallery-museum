@@ -1,6 +1,11 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment, Preload } from "@react-three/drei";
+import {
+  AdaptiveDpr,
+  AdaptiveEvents,
+  Environment,
+  Preload,
+} from "@react-three/drei";
 import { Instagram } from "lucide-react";
 import Museum from "./components/Museum";
 import LoadingScreen from "./components/ui/LoadingScreen";
@@ -55,9 +60,12 @@ function App() {
           position: [0, 2, 14],
           fov: 60,
         }}
-        dpr={1.5}
+        dpr={[1.5, 2.5]}
       >
         <Preload all />
+        <AdaptiveDpr pixelated />
+        <AdaptiveEvents />
+
         <Perf />
         <color attach="background" args={["#000000"]} />
         <Suspense fallback={<LoadingScreen setIsLoading={setIsLoading} />}>
