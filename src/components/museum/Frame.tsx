@@ -1,8 +1,7 @@
 import React, { useState, useRef, useContext, forwardRef } from "react";
-import { useTexture, Text, useCursor, Html } from "@react-three/drei";
+import { useTexture, Text, useCursor, useFont } from "@react-three/drei";
 import * as THREE from "three";
 import { ImageMetadata } from "../../types/museum";
-import { Instagram } from "lucide-react";
 import { ZoomContext } from "../../contexts/ZoomContext";
 
 interface FrameProps {
@@ -13,9 +12,13 @@ interface FrameProps {
   onFrameClick?: (index: number) => void;
 }
 
+useFont.preload("/fonts/Inter_28pt-SemiBold.ttf");
+
 const Frame = forwardRef<THREE.Mesh, FrameProps>(
   ({ position, rotation, image, index, onFrameClick }, ref) => {
     const [hovered, setHovered] = useState(false);
+    const [linkHovered, setLinkHovered] = useState(false);
+
     const [error, setError] = useState(false);
     const internalRef = useRef<THREE.Mesh>(null);
 
@@ -23,6 +26,7 @@ const Frame = forwardRef<THREE.Mesh, FrameProps>(
     const isZoomed = zoomedFrameId === index;
 
     useCursor(hovered);
+    useCursor(linkHovered);
 
     const texture = useTexture(image.url);
 
@@ -110,22 +114,37 @@ const Frame = forwardRef<THREE.Mesh, FrameProps>(
             maxWidth={0.7}
             textAlign="left"
             lineHeight={1.3}
+            font="/fonts/Inter_28pt-SemiBold.ttf"
           >
             {`${image.title}\n${image.artist}\n${image.date}`}
           </Text>
         </mesh>
 
         {isZoomed && (
-          <Html position={[0, -height / 2 - 0.25, -0.05]} transform>
-            <a
-              href="https://www.instagram.com/mjkdraw/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#ccc] flex items-center p-[1px] hover:text-white transition-all duration-300 text-[3px] gap-[1px]"
-            >
-              <Instagram className="w-1 h-1" /> Open in instagram →
-            </a>
-          </Html>
+          <mesh
+            position={[0, -height / 2 - 0.25, -0.04]}
+            onClick={() => {
+              window.open(
+                "https://www.instagram.com/mjkdraw/",
+                "_blank",
+                "noopener, noreferrer"
+              );
+            }}
+            onPointerOver={() => setLinkHovered(true)}
+            onPointerOut={() => setLinkHovered(false)}
+          >
+            <group position={[0, 0, 0.06]}>
+              <Text
+                fontSize={0.08}
+                color={linkHovered ? "#fff" : "#aaa"}
+                font="/fonts/Inter_28pt-SemiBold.ttf"
+              >
+                Open in instagram →
+              </Text>
+            </group>
+            <boxGeometry args={[1, 0.2, 0.1]} />
+            <meshBasicMaterial transparent opacity={0} />
+          </mesh>
         )}
       </group>
     );

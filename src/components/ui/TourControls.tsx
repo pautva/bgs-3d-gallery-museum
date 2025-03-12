@@ -120,11 +120,10 @@ const TourControls: React.FC = () => {
 
       <button
         onClick={quitTour}
-        className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full text-white flex items-center gap-1 ml-2"
+        className="bg-white/10 hover:bg-white/20 px-1 py-1 rounded-full text-white flex items-center gap-1 ml-2"
         title="Exit tour (Esc)"
       >
         <X size={14} />
-        <span className="text-xs">Exit</span>
       </button>
 
       <div className="text-white/60 text-xs absolute -bottom-5 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
