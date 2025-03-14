@@ -20,7 +20,7 @@ type GLTFResult = GLTF & {
 };
 
 export function MetalBench(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/metal_bench.glb") as GLTFResult;
+  const { nodes, materials } = useGLTF("/models/metal_bench.glb") as GLTFResult;
   return (
     <group {...props} dispose={null} scale={[0.45, 0.5, 0.4]}>
       <mesh
@@ -34,4 +34,4 @@ export function MetalBench(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/metal_bench.glb");
+useGLTF.preload("/models/metal_bench.glb");

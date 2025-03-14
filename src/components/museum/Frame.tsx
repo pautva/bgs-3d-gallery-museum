@@ -122,13 +122,9 @@ const Frame = forwardRef<THREE.Mesh, FrameProps>(
 
         {isZoomed && (
           <mesh
-            position={[0, -height / 2 - 0.25, -0.04]}
+            position={[0, -height / 2 - 0.2, -0.04]}
             onClick={() => {
-              window.open(
-                "https://www.instagram.com/mjkdraw/",
-                "_blank",
-                "noopener, noreferrer"
-              );
+              window.open(image.link, "_blank", "noopener, noreferrer");
             }}
             onPointerOver={() => setLinkHovered(true)}
             onPointerOut={() => setLinkHovered(false)}

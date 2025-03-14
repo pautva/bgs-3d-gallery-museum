@@ -40,7 +40,7 @@ function App() {
             <Preload all />
             <AdaptiveDpr pixelated />
             <AdaptiveEvents />
-            {/* <Perf /> */}
+            <Perf minimal={true} />
             <color attach="background" args={["#000000"]} />
             <Suspense fallback={<LoadingScreen setIsLoading={setIsLoading} />}>
               <Museum images={images} />

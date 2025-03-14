@@ -20,4 +20,5 @@ export interface ImageMetadata {
   artist: string;
   date: string;
   description: string;
+  link: string;
 }
