@@ -11,6 +11,8 @@ const Floor: React.FC<FloorProps> = ({ width, length, position }) => {
   const GPUTier = useDetectGPU();
   const lowConfig = GPUTier.isMobile || GPUTier.tier <= 2;
 
+  console.log("GPU Tier:", GPUTier.tier);
+
   return (
     <mesh position={position} rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[width, length]} />
