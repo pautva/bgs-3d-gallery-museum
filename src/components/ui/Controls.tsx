@@ -1,24 +1,81 @@
-import React, { useState } from "react";
-import { Keyboard, Info } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { Keyboard, Info, Volume2, VolumeX } from "lucide-react";
 
-const Controls: React.FC = () => {
+interface ControlsProps {
+  style?: React.CSSProperties;
+}
+
+const Controls: React.FC<ControlsProps> = ({ style }) => {
   const [displaySettings, setDisplaySettings] = useState<
     "none" | "information" | "settings"
   >("none");
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const audio = new Audio("/bgmusic.mp3");
+    audio.loop = true;
+    audio.volume = isMuted ? 0 : 0.06;
+    audioRef.current = audio;
+
+    const playAudio = () => {
+      if (audioRef.current) {
+        audioRef.current.play().catch((error) => {
+          console.error(
+            "Error playing audio waiting for user interaction",
+            error
+          );
+        });
+      }
+    };
+
+    playAudio();
+
+    const handleUserInteraction = () => {
+      playAudio();
+      document.removeEventListener("click", handleUserInteraction);
+      document.removeEventListener("keydown", handleUserInteraction);
+    };
+
+    document.addEventListener("click", handleUserInteraction);
+    document.addEventListener("keydown", handleUserInteraction);
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+      document.removeEventListener("click", handleUserInteraction);
+      document.removeEventListener("keydown", handleUserInteraction);
+    };
+  }, []);
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      if (isMuted) {
+        audioRef.current.volume = 0.06;
+      } else {
+        audioRef.current.volume = 0;
+      }
+      setIsMuted(!isMuted);
+    }
+  };
 
   return (
-    <>
+    <div style={style}>
       <div className="absolute bottom-4 right-4 flex gap-2">
         <button
-          onClick={() =>
-            setDisplaySettings((prev) =>
-              prev === "information" ? "none" : "information"
-            )
-          }
+          onClick={toggleMute}
           className="bg-white/10 backdrop-blur-md p-3 rounded-full hover:bg-white/20 transition-colors"
+          aria-label={isMuted ? "Activer le son" : "Couper le son"}
         >
-          <Info size={20} className="text-white" />
+          {isMuted ? (
+            <VolumeX size={20} className="text-white" />
+          ) : (
+            <Volume2 size={20} className="text-white" />
+          )}
         </button>
+
         <button
           onClick={() =>
             setDisplaySettings((prev) =>
@@ -29,20 +86,17 @@ const Controls: React.FC = () => {
         >
           <Keyboard size={20} className="text-white" />
         </button>
+        <button
+          onClick={() =>
+            setDisplaySettings((prev) =>
+              prev === "information" ? "none" : "information"
+            )
+          }
+          className="bg-white/10 backdrop-blur-md p-3 rounded-full hover:bg-white/20 transition-colors"
+        >
+          <Info size={20} className="text-white" />
+        </button>
       </div>
-
-      {displaySettings === "information" && (
-        <div className="absolute bottom-20 right-4 bg-black/80 backdrop-blur-md p-4 rounded-lg text-white w-96">
-          <h3 className="text-lg font-semibold mb-2">Information</h3>
-
-          <p>
-            Welcome to my interactive 3D museum! This project was created to
-            showcase my drawings in an immersive way using Three.js and React.
-          </p>
-          <br />
-          <p>Made by Tom Pastor</p>
-        </div>
-      )}
 
       {displaySettings === "settings" && (
         <div className="absolute bottom-20 right-4 bg-black/80 backdrop-blur-md p-4 rounded-lg text-white w-96">
@@ -72,9 +126,47 @@ const Controls: React.FC = () => {
               beginning.
             </li>
           </ul>
+
+          <h5 className="mt-3 font-semibold">Audio</h5>
+          <ul className="text-sm">
+            <li>• Click the sound icon to mute/unmute the background music.</li>
+          </ul>
         </div>
       )}
-    </>
+
+      {displaySettings === "information" && (
+        <div className="absolute bottom-20 right-4 bg-black/80 backdrop-blur-md p-4 rounded-lg text-white w-96">
+          <h3 className="text-lg font-semibold mb-2">Information</h3>
+
+          <p>
+            Welcome to my interactive 3D museum! This project was created to
+            showcase my drawings in an immersive way using Three.js and React.
+          </p>
+          <br />
+          <p>
+            "Metal Bench" 3D model by{" "}
+            <a
+              href="https://sketchfab.com/JanStano"
+              target="_blank"
+              className="underline"
+            >
+              JanStano
+            </a>
+          </p>
+          <br />
+          <p>
+            Developed by{" "}
+            <a
+              href="https://x.com/tymek_dev"
+              target="_blank"
+              className="underline"
+            >
+              @tymek_dev
+            </a>
+          </p>
+        </div>
+      )}
+    </div>
   );
 };
 

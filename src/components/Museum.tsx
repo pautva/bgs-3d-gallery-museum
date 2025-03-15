@@ -11,12 +11,15 @@ import { CameraManager } from "./museum/CameraManager";
 import SpotlightGroup from "./museum/SpotlightGroup";
 import { useTour } from "../contexts/TourContext";
 import CeilingLight from "./museum/CeilingLight";
+import { drawingImages } from "../config/imagesConfig";
 
 interface MuseumProps {
   images: ImageMetadata[];
 }
 
-const Museum: React.FC<MuseumProps> = ({ images }) => {
+const images = drawingImages;
+
+const Museum: React.FC<MuseumProps> = () => {
   const { currentFrameIndex, setCurrentFrameIndex, startTour, quitTour } =
     useTour();
   const frameRefs = useRef<(THREE.Mesh | null)[]>([]);
@@ -26,7 +29,7 @@ const Museum: React.FC<MuseumProps> = ({ images }) => {
     while (frameRefs.current.length < images.length) {
       frameRefs.current.push(null);
     }
-  }, [images.length]);
+  }, []);
 
   const { framePositions, frameRotations } = calculateFramePositions(
     defaultRoomDimensions,
