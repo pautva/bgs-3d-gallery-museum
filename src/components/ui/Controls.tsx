@@ -9,7 +9,7 @@ const Controls: React.FC<ControlsProps> = ({ style }) => {
   const [displaySettings, setDisplaySettings] = useState<
     "none" | "information" | "settings"
   >("none");
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
