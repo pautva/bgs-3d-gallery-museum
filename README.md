@@ -1,5 +1,7 @@
 # Virtual Museum
 
+![Retro Camera Showcase](./public/demo.gif)
+
 ## Live
 
 https://virtual-museum.tompastor.fr/
@@ -29,3 +31,7 @@ Author: JanStano (https://sketchfab.com/JanStano)
 License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 Source: https://sketchfab.com/3d-models/metal-bench-142d3f423d4a451f8eb6f4cce3d20ae4
 Title: Metal Bench
+
+## Music
+
+Amazing Grace from Casa Rosa
