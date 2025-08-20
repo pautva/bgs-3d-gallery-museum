@@ -71,7 +71,7 @@ const UIElements: React.FC = () => {
             }}
           >
             <Mountain className="mr-2" />
-            <h1 className="text-xl font-bold">BGS Geology 3D</h1>
+            <h1 className="text-xl font-bold">BGS 3D Models</h1>
           </a>
 
           <Controls

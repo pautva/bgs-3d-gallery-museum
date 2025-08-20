@@ -41,7 +41,7 @@ const LoadingScreen = ({
     >
       <div className="flex items-center mb-8">
         <Mountain size={40} className="text-white mr-3" />
-        <h1 className="text-white text-3xl font-bold">BGS Geology 3D</h1>
+        <h1 className="text-white text-3xl font-bold">BGS 3D Models</h1>
       </div>
 
       <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">

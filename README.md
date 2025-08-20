@@ -1,14 +1,10 @@
-# Virtual Museum
+# BGS Virtual Gallery of 3D Models
 
-![Retro Camera Showcase](./public/demo.gif)
-
-## Live
-
-https://virtual-museum.tompastor.fr/
+<!-- ![3D Museum Showcase](./public/demo.gif) -->
 
 ## Description
 
-A virtual gallery built with React Three Fiber and TailwindCSS to showcase my drawings and illustrations in an immersive 3D environment. This project was created as both a digital exhibition space and a practical exercise to improve my Three.js skills.
+A virtual museum built with React Three Fiber and TailwindCSS to showcase the latest BGS (British Geological Survey) 3D models in an immersive gallery environment. Explore geological models and scientific visualisations in an interactive 3D space.
 
 ## Setup
 
@@ -16,7 +12,7 @@ A virtual gallery built with React Three Fiber and TailwindCSS to showcase my dr
 # Install dependencies
 npm install
 
-# Run the local server at localhost:5173
+# Run the local server at localhost:3000
 npm run dev
 
 # Build the project
@@ -34,4 +30,4 @@ Title: Metal Bench
 
 ## Music
 
-Amazing Grace from Casa Rosa
+[Music by folk_acoustic from Pixabay](https://pixabay.com/music/ambient-calm-background-music-ambient-guitar-298550/)
