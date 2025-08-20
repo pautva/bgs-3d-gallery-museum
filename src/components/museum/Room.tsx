@@ -1,6 +1,7 @@
 import React from "react";
 import Floor from "./Floor";
 import { MetalBench } from "./Bench";
+import { BGSLogo } from "./BGSLogo";
 
 interface RoomProps {
   width: number;
@@ -49,6 +50,9 @@ const Room: React.FC<RoomProps> = ({
         <planeGeometry args={[sideWallLength, height]} />
         <meshStandardMaterial color="#1A1637" metalness={0} roughness={0.9} />
       </mesh>
+
+      {/* BGS Logo */}
+      <BGSLogo position={[0, -1, length / 2 ]} />
 
       {/* Benches*/}
       <MetalBench position={[0, 0, 2]} rotation={[0, Math.PI / 2, 0]} />

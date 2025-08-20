@@ -120,7 +120,7 @@ const Frame = forwardRef<THREE.Mesh, FrameProps>(
           </Text>
         </mesh>
 
-        {isZoomed && (
+        {isZoomed && image.link && image.link !== "#" && (
           <mesh
             position={[0, -height / 2 - 0.2, -0.04]}
             onClick={() => {
@@ -135,7 +135,7 @@ const Frame = forwardRef<THREE.Mesh, FrameProps>(
                 color={linkHovered ? "#fff" : "#aaa"}
                 font="/fonts/Inter_28pt-SemiBold.ttf"
               >
-                Open in instagram →
+                Open 3D Model →
               </Text>
             </group>
             <boxGeometry args={[1, 0.2, 0.1]} />

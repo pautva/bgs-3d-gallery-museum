@@ -59,7 +59,7 @@ const TitleScreen: React.FC<TitleScreenProps> = ({ onFading, onComplete }) => {
             textShadow: "0 2px 10px rgba(0,0,0,0.8)",
           }}
         >
-          Welcome to my virtual museum
+          BGS Virtual Gallery of 3D Models
         </h1>
       </div>
     </div>

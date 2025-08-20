@@ -139,8 +139,8 @@ const Controls: React.FC<ControlsProps> = ({ style }) => {
           <h3 className="text-lg font-semibold mb-2">Information</h3>
 
           <p>
-            Welcome to my interactive 3D museum! This project was created to
-            showcase my drawings in an immersive way using Three.js and React.
+            Welcome to our interactive 3D geological museum! This project showcases 
+            the latest 3D geological models. It is created using Three.js.
           </p>
           <br />
           <p>
@@ -154,7 +154,7 @@ const Controls: React.FC<ControlsProps> = ({ style }) => {
             </a>
           </p>
           <br />
-          <p>
+          {/* <p>
             Developed by{" "}
             <a
               href="https://x.com/tymek_dev"
@@ -163,7 +163,7 @@ const Controls: React.FC<ControlsProps> = ({ style }) => {
             >
               @tymek_dev
             </a>
-          </p>
+          </p> */}
         </div>
       )}
     </div>
