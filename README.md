@@ -1,5 +1,7 @@
 # BGS Virtual Gallery of 3D Models
 
+http://3d.glpages.ad.nerc.ac.uk/bgs-virtual-gallery-of-3d-models/
+
 <!-- ![3D Museum Showcase](./public/demo.gif) -->
 
 ## Description

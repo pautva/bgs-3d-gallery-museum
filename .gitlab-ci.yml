@@ -1,10 +1,13 @@
 image: node:18
 
 pages:
+  stage: deploy
   script:
     - npm ci
     - npm run build
-    - cp -r dist/ public/
+    - mkdir .public
+    - cp -r dist/. .public
+    - mv .public public
   artifacts:
     paths:
       - public/
