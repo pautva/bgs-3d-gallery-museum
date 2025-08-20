@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram } from "lucide-react";
+import { Mountain } from "lucide-react";
 import Controls from "./Controls";
 import TourControls from "./TourControls";
 import { useAnimation } from "../../contexts/AnimationContext";
@@ -70,8 +70,8 @@ const UIElements: React.FC = () => {
               animation: "fadeIn 1s ease-out forwards",
             }}
           >
-            <Instagram className="mr-2" />
-            <h1 className="text-xl font-bold">Geology 3D</h1>
+            <Mountain className="mr-2" />
+            <h1 className="text-xl font-bold">BGS Geology 3D</h1>
           </a>
 
           <Controls

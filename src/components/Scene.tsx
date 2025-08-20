@@ -6,7 +6,6 @@ import {
   Environment,
   Preload,
 } from "@react-three/drei";
-import { Perf } from "r3f-perf";
 import Museum from "./Museum";
 import { ImageMetadata } from "../types/museum";
 import { useAnimation } from "../contexts/AnimationContext";

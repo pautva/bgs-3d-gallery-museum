@@ -2,29 +2,29 @@ import { ImageMetadata } from "../types/museum";
 
 export const drawingImages: ImageMetadata[] = [
   {
-    url: "./gallery-images/space-earth.png",
-    title: "Porthgwarra Geological Formation",
-    artist: "British Geological Survey",
+    url: "./gallery-images/la-palma.png",
+    title: "La Palma",
+    artist: "Luz Ramos",
     date: "2024",
-    link: "https://www.instagram.com/p/CnsQEDSIK9A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    link: "https://sketchfab.com/3d-models/la-palma-fa14d2cc63d14d14b236db135ffa8e36",
     description:
-      "A detailed 3D geological model of the Porthgwarra coastal formation, showcasing the complex rock structures and erosional patterns found along the Cornish coast.",
+      "Generator: DEM Net Elevation API - https://elevationapi.com Mesh reduction: geometry3Sharp (GradientSpace, Ryan Schmidt) BSL 1.0 License",
   },
   {
-    url: "./gallery-images/bottle.png",
-    title: "Kilbourne Hole",
-    artist: "British Geological Survey",
-    date: "2024",
-    link: "https://www.instagram.com/p/Cy9CSYOIs45/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    url: "./gallery-images/gateshead.png",
+    title: "Gateshead 3D Geological Model",
+    artist: "Luz Ramos",
+    date: "2025",
+    link: "https://sketchfab.com/3d-models/gateshead-3d-geological-model-ee1d5fc32f1949e79d06723d47b11e4a",
     description:
-      "A volcanic maar crater formation captured in stunning 3D detail, revealing the geological processes that shaped this unique landscape feature.",
+      "https://sketchfab.com/3d-models/gateshead-3d-geological-model-ee1d5fc32f1949e79d06723d47b11e4a",
   },
   {
-    url: "./gallery-images/candy-planet.png",
-    title: "Nanjizal Beach - Land's End",
-    artist: "British Geological Survey",
+    url: "./gallery-images/selwicks-bay.png",
+    title: "Selwicks Bay",
+    artist: "BGS",
     date: "2024",
-    link: "https://www.instagram.com/p/C9fVt4aIk5N/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    link: "https://sketchfab.com/3d-models/selwicks-bay-70cca38eee6f425b929b0b3222159a40",
     description:
       "An intricate 3D model of Nanjizal Beach showcasing the dramatic cliff formations and coastal geology of Cornwall's most westerly point.",
   },
@@ -39,7 +39,7 @@ export const drawingImages: ImageMetadata[] = [
   {
     url: "./gallery-images/ripon.png",
     title: "Ripon Model",
-    artist: "Paulius",
+    artist: "BGS",
     date: "2024",
     link: "https://sketchfab.com/3d-models/ripon-test-v5-884bcf0dccd841a5a69cb9d2fa69c3de",
     description:

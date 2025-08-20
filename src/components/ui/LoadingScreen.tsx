@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useProgress } from "@react-three/drei";
-import { Instagram } from "lucide-react";
+import { Mountain } from "lucide-react";
 
 interface LoadingScreenProps {
   setIsLoading: (isLoading: boolean) => void;
@@ -40,8 +40,8 @@ const LoadingScreen = ({
       onTransitionEnd={handleTransitionEnd}
     >
       <div className="flex items-center mb-8">
-        <Instagram size={40} className="text-white mr-3" />
-        <h1 className="text-white text-3xl font-bold">Geology 3D</h1>
+        <Mountain size={40} className="text-white mr-3" />
+        <h1 className="text-white text-3xl font-bold">BGS Geology 3D</h1>
       </div>
 
       <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">

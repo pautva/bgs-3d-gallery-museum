@@ -153,6 +153,16 @@ const Controls: React.FC<ControlsProps> = ({ style }) => {
               JanStano
             </a>
           </p>
+                   <p>
+            "Music by{" "}
+            <a
+              href="https://pixabay.com/music/ambient-calm-background-music-ambient-guitar-298550/"
+              target="_blank"
+              className="underline"
+            >
+              folk_acoustic from Pixabay
+            </a>
+          </p>
           <br />
           {/* <p>
             Developed by{" "}

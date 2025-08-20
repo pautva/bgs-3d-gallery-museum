@@ -48,7 +48,7 @@ const Room: React.FC<RoomProps> = ({
         receiveShadow
       >
         <planeGeometry args={[sideWallLength, height]} />
-        <meshStandardMaterial color="#1A1637" metalness={0} roughness={0.9} />
+        <meshStandardMaterial color="#002E40" metalness={0} roughness={0.9} />
       </mesh>
 
       {/* BGS Logo */}
@@ -71,13 +71,13 @@ const Room: React.FC<RoomProps> = ({
         receiveShadow
       >
         <planeGeometry args={[sideWallLength, height]} />
-        <meshStandardMaterial color="#1A1637" metalness={0} roughness={0.9} />
+        <meshStandardMaterial color="#002E40" metalness={0} roughness={0.9} />
       </mesh>
 
       {/* Front Wall */}
       <mesh position={[0, height / 2, 0]} receiveShadow>
         <planeGeometry args={[frontWidth, height]} />
-        <meshStandardMaterial color="#1A1637" metalness={0} roughness={0.75} />
+        <meshStandardMaterial color="#9C6D2D" metalness={0} roughness={0.75} />
       </mesh>
     </group>
   );
