@@ -42,7 +42,7 @@ export const drawingImages: ImageMetadata[] = [
     title: "Ripon Model",
     artist: "BGS",
     date: "2024",
-    link: "https://sketchfab.com/3d-models/ripon-test-v5-884bcf0dccd841a5a69cb9d2fa69c3de",
+    link: "http://3d.glpages.ad.nerc.ac.uk/sketchfab-test/",
     description:
       "An advanced 3D terrain model of Ripon featuring detailed topography with integrated buildings, highway networks, and waterway systems.",
   },
