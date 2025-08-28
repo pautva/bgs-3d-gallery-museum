@@ -15,9 +15,9 @@ export const drawingImages: ImageMetadata[] = [
     title: "Gateshead 3D Geological Model",
     artist: "Luz Ramos",
     date: "2025",
-    link: "https://sketchfab.com/3d-models/gateshead-3d-geological-model-ee1d5fc32f1949e79d06723d47b11e4a",
+    link: "http://3d.glpages.ad.nerc.ac.uk/gateshead-3d-geological-model/",
     description:
-      "https://sketchfab.com/3d-models/gateshead-3d-geological-model-ee1d5fc32f1949e79d06723d47b11e4a",
+      "Project Groundwater Northumbria is part of the Environment Agency Flood and Coastal Resilience Innovation Programme.",
   },
   {
     url: "./gallery-images/selwicks-bay.png",
@@ -33,8 +33,9 @@ export const drawingImages: ImageMetadata[] = [
     title: "Cheshire Observatory",
     artist: "Owen & Luz",
     date: "2024",
-    link: "https://sketchfab.com/3d-models/bgs-ukgeos-site-location-2d21a9c182734cd0b2c46dd63c83311b",
-    description: "A comprehensive geological survey of Selwicks Bay, capturing the unique rock formations and coastal erosion patterns in high-resolution 3D.",
+    link: "http://3d.glpages.ad.nerc.ac.uk/ukgeos-cheshire-model-sketchfab-and-ui/",
+    description:
+      "This 3D visualisation shows the UKGEOS Cheshire Observatory infrastructure.",
   },
   {
     url: "./gallery-images/ripon.png",
